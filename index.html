@@ -248,9 +248,6 @@
   <div class="box" id="toolSection">
     <h2>WELLCOME TO CODEBOT</h2>
 
-    <div class="spacer"></div>
-    <div class="spacer"></div>
-
     <div id="codeSection">
       <input type="number" id="serialInput" placeholder="BOT (Optional)" inputmode="numeric" />
       <input type="text" id="codeInput" placeholder="CODE" oninput="autoFocusNumber()" />
@@ -259,24 +256,7 @@
 
       <button onclick="showEditPopup()">✏️ Edit</button>
     </div>
-
-    <!-- 🟦 CC Button under Save/Edit -->
-    <button onclick="window.location.href='numbertool.html'" style="
-      margin-top: 10px;
-      margin-left: 10px;
-      width: 45px;
-      height: 45px;
-      background: #0a84ff;
-      color: #fff;
-      font-weight: bold;
-      font-size: 0.95em;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      cursor: pointer;">
-      NUM
-    </button>
-
+    
     <div class="output-section" id="outputSection">
       <div id="result" class="output">No data.</div>
       <button id="copyBtn" class="btn-copy" onclick="copyResult()">📋 Copy</button>
@@ -296,21 +276,9 @@
     <button onclick="toggleSection('home')">🏠 Home</button>
     <button onclick="toggleSection('list')">📋 List</button>
     <button onclick="showUserListPopup()">👥 Userlist</button>
-    <button onclick="toggleSection('mono')">💠 Mono</button>
     <button onclick="toggleDarkMode()">🌓</button>
       </div>
 
-  <!-- Popups -->
-  <div id="editPopup" class="popup" onclick="hideEditPopup(event)">
-    <div class="popup-content" onclick="event.stopPropagation()" style="display:flex; flex-direction:column; gap:10px; width:90%; max-width:400px;">
-      <span onclick="hideEditPopup()" style="align-self: flex-end;">❌</span>
-      <h3 style="text-align:center;">✏️ Edit Serial Line</h3>
-      <input type="number" id="botInput" placeholder="🔢 Serial No." inputmode="numeric" />
-      <input type="text" id="codeEditInput" placeholder="🧾 Code (8–9 chars)" maxlength="9" />
-      <input type="number" id="userInput" placeholder="👤 User" />
-      <button onclick="submitEdit()" class="btn-confirm">✅ Update</button>
-    </div>
-  </div>
 
   <div class="popup" id="listPopup">
     <div class="popup-content">
