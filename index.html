@@ -387,6 +387,7 @@
       })
       .catch((error) => {
         showToast('Login failed: ' + error.message, '#ff1744');
+        window.location.reload();
       });
   }
 
@@ -415,6 +416,7 @@
       showToast('Logged out successfully', '#00c853');
     }).catch((error) => {
       showToast('Logout failed: ' + error.message, '#ff1744');
+      window.location.reload();
     });
   }
 
@@ -490,7 +492,7 @@
     toast.style.display = "block";
     setTimeout(() => {
       toast.style.display = "none";
-      if (reload) location.reload();
+      
     }, withLoader ? 2000 : 1500);
   }
 
@@ -775,32 +777,6 @@
     }
   });
 
-  // Function to handle logout
-function handleLogout() {
-  // Perform logout operations (clear tokens, etc.)
-  // Example:
-  localStorage.removeItem('authToken');
-  sessionStorage.removeItem('userData');
-  
-  // Reload the page
-  window.location.reload();
-  
-  // Optional: Redirect to login page
-  // window.location.href = '/login.html';
-}
-
-// Function to handle successful login
-function handleLogin() {
-  // Perform login operations (set tokens, etc.)
-  // Example:
-  // localStorage.setItem('authToken', 'your-token-here');
-  
-  // Reload the page to reflect authenticated state
-  window.location.reload();
-  
-  // Optional: Redirect to dashboard/home
-  // window.location.href = '/dashboard.html';
-}
 
 // Check for service worker updates
 if ('serviceWorker' in navigator) {
