@@ -253,10 +253,10 @@
     <div class="spacer"></div>
 
     <div id="codeSection">
+      <input type="number" id="serialInput" placeholder="SERIAL (Optional)" inputmode="numeric" />
       <input type="text" id="codeInput" placeholder="CODE" oninput="autoFocusNumber()" />
       <input type="number" id="numberInput" placeholder="NUMBER" />
-      <input type="number" id="serialInput" placeholder="SERIAL (Optional)" inputmode="numeric" />
-      <button onclick="insertCode()" class="btn-save">💾 Save Code</button>
+       <button onclick="insertCode()" class="btn-save">💾 Save Code</button>
 
       <button onclick="showEditPopup()">✏️ Edit</button>
     </div>
