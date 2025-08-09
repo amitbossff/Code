@@ -791,16 +791,35 @@
     }
   });
 
-  // Service Worker registration
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-      navigator.serviceWorker.register('sw.js').then(function(registration) {
-        console.log('ServiceWorker registered: ', registration);
-      }).catch(function(error) {
-        console.log('ServiceWorker registration failed: ', error);
+// Check for service worker updates
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js').then(registration => {
+    registration.addEventListener('updatefound', () => {
+      const newWorker = registration.installing;
+      newWorker.addEventListener('statechange', () => {
+        if (newWorker.state === 'installed') {
+          if (navigator.serviceWorker.controller) {
+            // New update available
+            console.log('New version available!');
+            // You can show an update notification to the user here
+            // For example:
+            if (confirm('A new version is available. Update now?')) {
+              newWorker.postMessage('skipWaiting');
+              window.location.reload();
+            }
+          }
+        }
       });
     });
-  }
+  });
+  
+  // Check for updates on page load
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.getRegistration().then(reg => {
+      if (reg) reg.update();
+    });
+  });
+}
 </script>
 </body>
 </html>
