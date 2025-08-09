@@ -243,8 +243,7 @@
 
 <div id="appContent" style="display: none;">
   <div style="position: fixed; top: 15px; left: 15px; z-index: 10000;">
-    <button onclick="toggleDarkMode()" style="padding: 10px; border-radius: 10px;">🌓</button>
-    <button onclick="logoutUser()" style="padding: 10px; border-radius: 10px; margin-left: 5px; background: #d32f2f;">🚪 Logout</button>
+    <button onclick="logoutUser()" style="padding: 10px; border-radius: 10px; margin-left: 5px; background: #d32f2f;">Logout</button>
   </div>
 
   <div class="box" id="toolSection">
@@ -257,32 +256,16 @@
       <input type="text" id="codeInput" placeholder="CODE" oninput="autoFocusNumber()" />
       <input type="number" id="numberInput" placeholder="NUMBER" />
       <input type="number" id="serialInput" placeholder="SERIAL (Optional)" inputmode="numeric" />
-      <button onclick="insertCode()" class="btn-save">💾 Save Code</button>
+      <button onclick="insertCode()" class="btn-save">💾 Save</button>
 
-      <button onclick="showEditPopup()">✏️ Edit</button>
+      
     </div>
 
-    <!-- 🟦 CC Button under Save/Edit -->
-    <button onclick="window.location.href='numbertool.html'" style="
-      margin-top: 10px;
-      margin-left: 10px;
-      width: 45px;
-      height: 45px;
-      background: #0a84ff;
-      color: #fff;
-      font-weight: bold;
-      font-size: 0.95em;
-      border: none;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      cursor: pointer;">
-      NUM
-    </button>
+
 
     <div class="output-section" id="outputSection">
       <div id="result" class="output">No data.</div>
       <button id="copyBtn" class="btn-copy" onclick="copyResult()">📋 Copy</button>
-      <button id="saveHistoryBtn" class="btn-save" onclick="saveUpdatedListToHistory()">💾 Save List</button>
     </div>
 
     <textarea id="monoInput" rows="6" placeholder="🔤 Paste mono list (codes)..." style="display:none;"></textarea>
@@ -299,7 +282,7 @@
     <button onclick="toggleSection('list')">📋 List</button>
     <button onclick="showUserListPopup()">👥 Userlist</button>
     <button onclick="toggleSection('mono')">💠 Mono</button>
-    <button onclick="toggleSection('history')">🕘 History</button>
+    <button onclick="toggleDarkMode()">🌓</button>
   </div>
 
   <!-- Popups -->
