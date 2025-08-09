@@ -242,8 +242,7 @@
 
 <div id="appContent" style="display: none;">
   <div style="position: fixed; top: 15px; left: 15px; z-index: 10000;">
-    <button onclick="toggleDarkMode()" style="padding: 10px; border-radius: 10px;">🌓</button>
-    <button onclick="logoutUser()" style="padding: 10px; border-radius: 10px; margin-left: 5px; background: #d32f2f;">🚪 Logout</button>
+    <button onclick="logoutUser()" style="padding: 10px; border-radius: 10px; margin-left: 5px; background: #d32f2f;">out</button>
   </div>
 
   <div class="box" id="toolSection">
@@ -298,8 +297,8 @@
     <button onclick="toggleSection('list')">📋 List</button>
     <button onclick="showUserListPopup()">👥 Userlist</button>
     <button onclick="toggleSection('mono')">💠 Mono</button>
-    <button onclick="toggleSection('history')">🕘 History</button>
-  </div>
+    <button onclick="toggleDarkMode()">🌓</button>
+      </div>
 
   <!-- Popups -->
   <div id="editPopup" class="popup" onclick="hideEditPopup(event)">
