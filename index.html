@@ -255,6 +255,7 @@
     <div id="codeSection">
       <input type="text" id="codeInput" placeholder="CODE" oninput="autoFocusNumber()" />
       <input type="number" id="numberInput" placeholder="NUMBER" />
+      <input type="number" id="serialInput" placeholder="SERIAL (Optional)" inputmode="numeric" />
       <button onclick="insertCode()" class="btn-save">💾 Save Code</button>
 
       <button onclick="showEditPopup()">✏️ Edit</button>
@@ -492,7 +493,6 @@
     }
   }
 
-  // Rest of your existing functions with LocalStorage replaced by Firestore calls
   function hideUserListPopup(e) {
     if (!e || e.target.id === "userListPopup") {
       document.getElementById("userListPopup").style.display = "none";
@@ -575,11 +575,38 @@
   async function insertCode() {
     const code = document.getElementById("codeInput").value.trim();
     const number = document.getElementById("numberInput").value.trim();
+    const serialInput = document.getElementById("serialInput").value.trim();
+    
     if (!code || !number || (code.length !== 8 && code.length !== 9) || isNaN(number)) {
       showToast("❌ Format: ABC123456 + 2300", "#ff1744");
       return;
     }
 
+    // If serial is provided, update that specific entry
+    if (serialInput) {
+      const serial = parseInt(serialInput);
+      const item = userData.list.find(x => x.serial === serial);
+      
+      if (!item) {
+        showToast("❌ Serial not found!", "#ff1744");
+        return;
+      }
+
+      if (item.value === "deleted") {
+        showToast("⚠️ Cannot update deleted line!", "#ff9100");
+        return;
+      }
+
+      item.value = `${code}   ${number}   ${item.value}`;
+      const success = await saveUserData();
+      if (success) {
+        showToast(`✅ Updated serial ${serial}!`, "#00c853", true, true);
+        showList();
+      }
+      return;
+    }
+
+    // If no serial provided, proceed with normal insertion
     for (let i = userData.nextIndex; i < userData.list.length; i++) {
       let item = userData.list[i];
       if (item.value !== "deleted" && !item.value.includes(" ")) {
