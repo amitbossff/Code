@@ -252,13 +252,13 @@
     <div class="spacer"></div>
     <div class="spacer"></div>
 
-    <div id="codeSection">
-      <input type="text" id="codeInput" placeholder="CODE" oninput="autoFocusNumber()" />
-      <input type="number" id="numberInput" placeholder="USER" oninput="autoFocusSerial()" />
-      <input type="number" id="serialInput" placeholder="BOT NUMBER" inputmode="numeric" />
-      <button onclick="insertCode()" class="btn-save">💾 Save</button>
-      
-    </div>
+      <div id="codeSection" style="display: flex; flex-wrap: wrap; gap: 10px;">
+  <input type="text" id="codeInput" placeholder="CODE" style="flex: 1 1 48%;" oninput="autoFocusNumber()" />
+  <input type="number" id="numberInput" placeholder="USER" style="flex: 1 1 48%;" oninput="autoFocusSerial()" />
+  <input type="number" id="serialInput" placeholder="BOT NUMBER" inputmode="numeric" style="flex: 1 1 48%;" />
+  <button onclick="insertCode()" class="btn-save" style="flex: 1 1 48%;">💾 Save</button>
+      </div>
+    
 
 
 
